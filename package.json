@@ -1,0 +1,24 @@
+{
+  "name": "ecom-api-37",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Broadway-Mern-Team/ecom-api-37.git"
+  },
+  "author": "Sandesh Bhattarai",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Broadway-Mern-Team/ecom-api-37/issues"
+  },
+  "homepage": "https://github.com/Broadway-Mern-Team/ecom-api-37#readme",
+  "keywords": [],
+  "dependencies": {
+    "express": "^5.0.1"
+  }
+}
