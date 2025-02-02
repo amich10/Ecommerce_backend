@@ -1,4 +1,5 @@
 import express from "express";
+import router from "./router.config.js";
 const app = express()
 
 // Router
@@ -34,22 +35,9 @@ app.use('/health', (req, res) => {
   })
 })
 
-app.post("/about-us", (req, res) => {
-  res.json({
-    data: "About us page here",
-    message: "Success",
-    status: "OK",
-    options: null
-  })  
-})
-
-app.get("/contact-us", (req, res) => {
-  res.json({
-    data: "Contact us",
-    message: "Success",
-    status: "OK",
-    options: null
-  })  
-})
+// Mount /load express router
+//versioning
+app.use('/ap1/v1',router);
+// Query and params
 
 export default app;

@@ -51,3 +51,77 @@
 - `json on statusCode: 200-2X => { data: <any>, message: <string>, status: <string>, options: <array|object|null>}`
 * Error Response
 - `json on statusCode: 4/5X => { error: <object|null>, message: <string>, status: <string>, options: <array|object|null>}`
+
+
+### To be learned 
+# router
+# rest API
+# MVC pattern
+# modular pettern
+
+200,201,204
+400,401,403,404,405,408
+500, 502, 503, 504
+
+
+### Porject Feature - Ecommerce
+* Authentication and Authorization 
+* Banner/Slider
+* Category
+* User 
+* Brand 
+* Product
+* Order 
+* Payments 
+* Chat Implement 
+* Rate And Review 
+* Offers, Vouchers, Coupons 
+* Inventory 
+* Logisitic/Delivery 
+* payroll 
+* Return / refunds
+
+### Itterative development 
+* Modular Development 
+* Major feature - Minor feature
+* Core feature first phase develop 
+
+
+## Architecture 
+* MVC pattern 
+  - Routing ===> Model-View-Controller
+
+## Code flow 
+- Routes (/src/config/router.config.js) ===> module/router (src/modules/<module>/<module>.router.js) ===> Middleware(optional) ====> controller (src/modules/<module>/<module>.controller.js) =====> service (src/modules/<modules>/<module>.service.js or src/services/<service>.service.js) ====> Model(DB operations, src/modules/<module>/<module>.model.js)
+                                                                                                     ===> Middleware(optional) ====> Respond to client (end)
+`src/`
+  `modules/  ---- to store all modules`
+    `feature/`
+      `feature.router.js`
+      `feature.controller.js`
+      `feature.service.js`
+      `feature.model.js`
+      `feature.validators.js`
+  `services/  ---- to store all services`
+  `config/  ---- to store all configurataion`
+`public/  --- used for file upload`
+
+### Feature: Authentication and Authorization 
+- This feature will handle all the login, registration,logout, forget-password, reset-password, activation and user roles and permissions
+* Routes: 
+  * Registration    -> post method,   url: /auth/register
+  * Activate        -> get method,    url: /auth/activate/:token
+  * Login           -> post method,   url: /auth/login
+  * Logged In User  -> get method,    url: /auth/me
+  * Logou(option)   -> get method,    url: /auth/logout (no need to develop)
+  * Forget password -> post method,   url: /auth/forget-password
+  * Password reset  -> patch method,  url: /auth/password-reset/:token
+
+### Feature: Banner/Slider
+- This feature will allow an admin user to perform CRUD with banner/slider 
+* Routes 
+  * Create          -> post method,     url: /banner
+  * List all        -> get method,      url: /banner
+  * View Detail     -> get method,      url: /banner/:id
+  * Update          -> patch method,    url: /banner/:id
+  * Delete          -> delete method,   url: /banner/:id
