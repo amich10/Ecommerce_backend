@@ -20,6 +20,7 @@ bannerRouter.get('/', (req,res,next) =>{})
 bannerRouter.get('/:id', (req,res,next) =>{})
 
 //update specific banner
+
 bannerRouter.patch('/:id', (req,res,next) =>{})
 
 //delete specific banner
