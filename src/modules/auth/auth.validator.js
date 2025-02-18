@@ -38,11 +38,12 @@ const RegisterUserDTO = joi.object({
 
 
 const LoginUserDTO = joi.object({
-    email: joi.string().email().required().messages({
-        
-    }),
+    email: joi.string().email().required(),
     password: joi.string().required()
 });
+
+
+
 
 const ForgetPasswordDTO = joi.object({
     email:joi.string().email().required()

@@ -48,9 +48,9 @@ const authRouter = Router()
 //localhost:9005/ap1/v1/auth/register
 authRouter.post('/register',uploader().single('image'), bodyValidator(RegisterUserDTO),authCtrl.registerUser)
 
-authRouter.get('/activate/:token',authCtrl.activateAccount)
+authRouter.get('/activate/:token',authCtrl.activateUser)
 
-authRouter.post('/login',authCtrl.userLogin) 
+authRouter.post('/login', bodyValidator(LoginUserDTO),authCtrl.userLogin) 
 
 authRouter.get('/me', authCtrl.getUserProfile)
 

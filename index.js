@@ -10,5 +10,3 @@ httpServer.listen(9005, '127.0.0.1', (err) => {
     console.log("Press CTRL+C to discontinue the server...")
   }
 })
-
-
