@@ -3,6 +3,7 @@ import authCtrl from "./auth.controller.js";
 import { RegisterUserDTO,LoginUserDTO,ForgetPasswordDTO,ResetPasswordDTO } from "./auth.validator.js";
 import { bodyValidator } from "../../middleware/request.validator.js";
 import { uploader } from "../../middleware/file-handling.middleware.js";
+import allowUser from "../../middleware/auth.middleware.js";
 
 const authRouter = Router()
 
@@ -47,16 +48,16 @@ const authRouter = Router()
 
 //localhost:9005/ap1/v1/auth/register
 authRouter.post('/register',uploader().single('image'), bodyValidator(RegisterUserDTO),authCtrl.registerUser)
-
 authRouter.get('/activate/:token',authCtrl.activateUser)
-
 authRouter.post('/login', bodyValidator(LoginUserDTO),authCtrl.userLogin) 
+authRouter.get('/me', allowUser(),authCtrl.getUserProfile) //only accessible by logged user
 
-authRouter.get('/me', authCtrl.getUserProfile)
 
-authRouter.post('/forget-password',authCtrl.forgetPassword)
+authRouter.post('/forget-password',bodyValidator(ForgetPasswordDTO),authCtrl.forgetPassword)
 
-authRouter.patch('/password-reset/:token',authCtrl.resetPassword)
+authRouter.get('/verify-token/:token',authCtrl.verifyForgetPasswordToken)
+
+authRouter.patch('/password-reset',bodyValidator(ResetPasswordDTO),authCtrl.resetPassword)
 
 
 

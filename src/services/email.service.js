@@ -43,6 +43,7 @@ class EmailService{
                 bcc:"",
                 attachments:"" */
             })
+            
         }
         catch(exception){ //exception while sending email: low priority bug
             console.log("---------- Error while sending Email ----------")
@@ -52,6 +53,7 @@ class EmailService{
                 status:"EMAIL_SEND_ERROR"
 
             }
+            
 
         }
 

@@ -44,13 +44,14 @@ app.use((error,req,res,next) =>{
   let errorDetail = error.detail || null
 
   //statusCode,msg,status, errorDetail => change based on error type
+
   // specific errors
   if(error.name ==='MongoServerError'){
     statusCode = 422;
     if(error.code === 11000){
       statusCode = 400;
       
-      let key = Object.keys(error.keyPattern).pop();
+      let key = Object.keys(error.keyPattern).pop(); //pop removes last element and adds it to the key
       errorDetail = {
         // email:"Email has been already taken or should be unique!"
         [key]: key + " has been already taken or should be unique!"
@@ -63,7 +64,7 @@ app.use((error,req,res,next) =>{
 
   //no need to change
   res.status(statusCode).json({   //500, default se
-  // rver error
+  // server error
     error:errorDetail,
     message: msg,
     status: status,

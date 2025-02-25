@@ -37,7 +37,7 @@ export const uploader = (type = 'image') =>{
         //logic
         let ext = file.originalname.split(".").pop()
 
-        if(allowedExtension.includes(ext.toLocaleLowerCase())){
+        if(allowedExtension.includes(ext.toLowerCase())){
             cb(null,true)
         }else{
             cb({
@@ -59,4 +59,6 @@ export const uploader = (type = 'image') =>{
         }
     })
 }
+
+
 

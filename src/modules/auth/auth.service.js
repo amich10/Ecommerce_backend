@@ -94,6 +94,36 @@ class AuthService{
         throw exception
         }
     }
+
+    notifyForgetPasswordEmail = async ({name,email,forgetPaswwordToken}) =>{
+        try{
+
+            let msg = `
+            <strong>Dear ${name},</strong> <br>
+            <p>You have requested to reset your passwod. To change your password, please follow the following steps.</P>
+            </em>Please click the link below or copy paste url in the browser of your choice to reset your password</p>
+            <a href="${appConfig.frontendUrl}verify-frget-token/${forgetPaswwordToken}" style="color: #008000; text-decoration:underline;">
+            ${appConfig.frontendUrl}verify-forget-token/${forgetPaswwordToken}</a>
+            <br>
+            <p><strong>Note: This link is valid for 1 hour only.</strong></p>
+            <p><strong>Regards,<strong></p>
+            <p><strong>${smtpConfig.fromAddress}</strong></p>
+            <p><small><em>Please do not reply to this email directly, please contact our administation for further assiatance.</em></small></p>`;
+
+            return await emailSvc.sendEmail({
+                to:email,
+                sub:"Reset your password",
+                message:msg
+            })
+
+            
+       }catch(exception){
+        throw exception
+        }
+    }
+
+    
+
 }
 
 const authSvc = new AuthService()

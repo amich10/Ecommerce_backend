@@ -50,8 +50,15 @@ const ForgetPasswordDTO = joi.object({
 });
 
 const ResetPasswordDTO = joi.object({
-    password: joi.string().required(),
-    confirmPassword: joi.string().equal(joi.ref('password')).required()
+    token:joi.string().min(100).max(100).required(),
+    password: joi.string().regex(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*>-])[a-zA-Z\d!@#$%^&*>-]{8,25}$/).required().messages({
+        "string.pattern.base": "Password must contain at least one lowercase letter, one uppercase letter, one number, and one special character.",
+        "any.required": "Password is required."
+    }),
+    confirmPassword: joi.string().equal(joi.ref('password')).required().messages({
+        "any.only": "confirmPassword must be similar to password",
+         "any.required": "Confirm password is required."
+    }),
 })
 
 export {RegisterUserDTO,LoginUserDTO,ForgetPasswordDTO,ResetPasswordDTO};

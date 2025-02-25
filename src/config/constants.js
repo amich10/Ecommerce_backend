@@ -32,7 +32,8 @@ export const genderTypes = {
 }
 
 export const appConfig = {
-    frontendUrl:process.env.FRONTEND_URL
+    frontendUrl:process.env.FRONTEND_URL,
+    jwtSecret:process.env.JWT_SECRET,
 }
 
 export const smtpConfig ={
@@ -43,3 +44,4 @@ export const smtpConfig ={
     password:process.env.SMTP_PASSWORD,
     port:process.env.SMTP_PORT,
 }
+
