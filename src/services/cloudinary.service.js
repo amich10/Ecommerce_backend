@@ -31,7 +31,6 @@ class CloudinaryService{
                 folder: "ecommerce/" + dir,
             })
 
-
             // delete original file from our server
             fs.unlinkSync(filepath)
 
