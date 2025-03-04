@@ -44,6 +44,7 @@ class BaseService{
             throw exception
         }
     }
+    
 }
 
 export default BaseService;

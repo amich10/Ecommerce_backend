@@ -1,19 +1,26 @@
 import cloudinarySvc from "../../services/cloudinary.service.js";
-import brandModel from "./brand.model.js";
+import categoryModel from "./category.model.js";
 import slugify from "slugify";
 import BaseService from "../../services/base.service.js"
 
 
-class BrandService extends BaseService{
+class CategoryService extends BaseService{
     constructor(){
-        super(brandModel)
+        super(categoryModel)
     }
     transformCreateBody = async (req,res,next) =>{
         try{
             let payload = req.body;
-            payload.image = await cloudinarySvc.fileUpload(req.file.path,'/brand');
+            payload.image = await cloudinarySvc.fileUpload(req.file.path,'/category');
+
+            if(payload.parentId === 'null' || payload.parentId === '' || !payload.parentId){
+                payload.parentId = null
+            }
+
             payload.createdBy=req.authUser._id;
-            payload.slug = slugify(payload.title,{
+
+            let slug = payload.title.replace("'",'').replace('"','')
+            payload.slug = slugify(slug,{
                 lower:true,
                 trim:true
             })
@@ -27,24 +34,31 @@ class BrandService extends BaseService{
 
     // create = async(data) =>{
     //     try{
-    //         const brand = new brandModel(data)
-    //         return await brand.save()
+    //         const category = new categoryModel(data)
+    //         return await category.save()
     //     }catch(exception){
     //         throw exception
     //     }
     // }
 
-    transformUpddateBody = async (req,oldBrandData) =>{
+    transformUpddateBody = async (req,oldCategoryData) =>{
         try{
             const payload = req.body; //title and status
+
+            
+            if(payload.parentId === 'null' || payload.parentId === '' || !payload.parentId){
+                payload.parentId = null
+            }
 
             //if image is uploaded
 
             if(req.file){
-                payload.image = await cloudinarySvc.fileUpload(req.file.path,'/brand')
+                payload.image = await cloudinarySvc.fileUpload(req.file.path,'/category')
             }else{
-                payload.image = oldBrandData.image
+                payload.image = oldCategoryData.image
             }
+
+
 
             payload.updatedBy = req.authUser._id;
 
@@ -73,13 +87,14 @@ class BrandService extends BaseService{
                      [column_name] : direction
                  }
              }
-            const data = await brandModel.find(filter)
+            const data = await categoryModel.find(filter)
+                .populate("parentId",['_id','title','slug','status','image'])  
                 .populate("createdBy",['_id','name','email','status','role'])
                 .sort(sort)
                 .skip(skip)
                 .limit(limit);
 
-            const dataCount = await brandModel.countDocuments(filter) //client doesnot know the total num of data so it needs to be send
+            const dataCount = await categoryModel.countDocuments(filter) //client doesnot know the total num of data so it needs to be send
             return {data, pagination:{
                 limit:limit,
                 page:page,
@@ -93,8 +108,8 @@ class BrandService extends BaseService{
     
 }
 
-const brandSvc = new BrandService()
-export default brandSvc;
+const categorySvc = new CategoryService()
+export default categorySvc;
 
 
 

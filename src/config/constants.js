@@ -45,3 +45,11 @@ export const smtpConfig ={
     port:process.env.SMTP_PORT,
 }
 
+
+export const OrderStatus = {
+    PENDING:"pending",
+    VERIFIED:"verified",
+    CANCELLED:"cancelled",
+    PROCESSING:"processing",
+    DELIVERED:"delivered"
+}

@@ -53,17 +53,6 @@
 - `json on statusCode: 4/5X => { error: <object|null>, message: <string>, status: <string>, options: <array|object|null>}`
 
 
-### To be learned 
-# router
-# rest API
-# MVC pattern
-# modular pettern
-
-200,201,204
-400,401,403,404,405,408
-500, 502, 503, 504
-
-
 ### Porject Feature - Ecommerce
 * Authentication and Authorization 
 * Banner/Slider
@@ -127,13 +116,101 @@
   * Delete          -> delete method,   url: /banner/:id
 
 
-db.users.insertMany([{"fullName":"user11","email":"user11@gmail.com","password":"$2a$12$FiEWGxLmKa6/C7CQEAHiUeSRCv6GoAefxoxnIdN3fkf1xwrZQdGfi","address":"Butwal","role":"admin","phone":"8900000011","gender":"male","image":{"url":"https://res.cloudinary.com/dcleoboh7/image/upload/v1739160934/ecommerce/users/img11.jpg","optimizedUrl":"https://res.cloudinary.com/dcleoboh7/image/upload/f_auto,q_auto/v1/ecommerce/users/img11"}},
-  {"fullName":"user12","email":"user12@gmail.com","password":"$2a$12$FiEWGxLmKa6/C7CQEAHiUeSRCv6GoAefxoxnIdN3fkf1xwrZQdGfi","address":"Hetauda","role":"user","phone":"8900000012","gender":"female","image":{"url":"https://res.cloudinary.com/dcleoboh7/image/upload/v1739160934/ecommerce/users/img12.jpg","optimizedUrl":"https://res.cloudinary.com/dcleoboh7/image/upload/f_auto,q_auto/v1/ecommerce/users/img12"}},
-  {"fullName":"user13","email":"user13@gmail.com","password":"$2a$12$FiEWGxLmKa6/C7CQEAHiUeSRCv6GoAefxoxnIdN3fkf1xwrZQdGfi","address":"Dharan","role":"admin","phone":"8900000013","gender":"male","image":{"url":"https://res.cloudinary.com/dcleoboh7/image/upload/v1739160934/ecommerce/users/img13.jpg","optimizedUrl":"https://res.cloudinary.com/dcleoboh7/image/upload/f_auto,q_auto/v1/ecommerce/users/img13"}},
-  {"fullName":"user14","email":"user14@gmail.com","password":"$2a$12$FiEWGxLmKa6/C7CQEAHiUeSRCv6GoAefxoxnIdN3fkf1xwrZQdGfi","address":"Dang","role":"user","phone":"8900000014","gender":"female","image":{"url":"https://res.cloudinary.com/dcleoboh7/image/upload/v1739160934/ecommerce/users/img14.jpg","optimizedUrl":"https://res.cloudinary.com/dcleoboh7/image/upload/f_auto,q_auto/v1/ecommerce/users/img14"}},
-  {"fullName":"user15","email":"user15@gmail.com","password":"$2a$12$FiEWGxLmKa6/C7CQEAHiUeSRCv6GoAefxoxnIdN3fkf1xwrZQdGfi","address":"Doti","role":"admin","phone":"8900000015","gender":"male","image":{"url":"https://res.cloudinary.com/dcleoboh7/image/upload/v1739160934/ecommerce/users/img15.jpg","optimizedUrl":"https://res.cloudinary.com/dcleoboh7/image/upload/f_auto,q_auto/v1/ecommerce/users/img15"}},
-  {"fullName":"user16","email":"user16@gmail.com","password":"$2a$12$FiEWGxLmKa6/C7CQEAHiUeSRCv6GoAefxoxnIdN3fkf1xwrZQdGfi","address":"Ilam","role":"user","phone":"8900000016","gender":"female","image":{"url":"https://res.cloudinary.com/dcleoboh7/image/upload/v1739160934/ecommerce/users/img16.jpg","optimizedUrl":"https://res.cloudinary.com/dcleoboh7/image/upload/f_auto,q_auto/v1/ecommerce/users/img16"}},
-  {"fullName":"user17","email":"user17@gmail.com","password":"$2a$12$FiEWGxLmKa6/C7CQEAHiUeSRCv6GoAefxoxnIdN3fkf1xwrZQdGfi","address":"Birgunj","role":"admin","phone":"8900000017","gender":"male","image":{"url":"https://res.cloudinary.com/dcleoboh7/image/upload/v1739160934/ecommerce/users/img17.jpg","optimizedUrl":"https://res.cloudinary.com/dcleoboh7/image/upload/f_auto,q_auto/v1/ecommerce/users/img17"}},
-  {"fullName":"user18","email":"user18@gmail.com","password":"$2a$12$FiEWGxLmKa6/C7CQEAHiUeSRCv6GoAefxoxnIdN3fkf1xwrZQdGfi","address":"Janakpur","role":"user","phone":"8900000018","gender":"female","image":{"url":"https://res.cloudinary.com/dcleoboh7/image/upload/v1739160934/ecommerce/users/img18.jpg","optimizedUrl":"https://res.cloudinary.com/dcleoboh7/image/upload/f_auto,q_auto/v1/ecommerce/users/img18"}},
-  {"fullName":"user19","email":"user19@gmail.com","password":"$2a$12$FiEWGxLmKa6/C7CQEAHiUeSRCv6GoAefxoxnIdN3fkf1xwrZQdGfi","address":"Biratnagar","role":"admin","phone":"8900000019","gender":"male","image":{"url":"https://res.cloudinary.com/dcleoboh7/image/upload/v1739160934/ecommerce/users/img19.jpg","optimizedUrl":"https://res.cloudinary.com/dcleoboh7/image/upload/f_auto,q_auto/v1/ecommerce/users/img19"}},
-  {"fullName":"user20","email":"user20@gmail.com","password":"$2a$12$FiEWGxLmKa6/C7CQEAHiUeSRCv6GoAefxoxnIdN3fkf1xwrZQdGfi","address":"Nepalgunj","role":"user","phone":"8900000020","gender":"female","image":{"url":"https://res.cloudinary.com/dcleoboh7/image/upload/v1739160934/ecommerce/users/img20.jpg","optimizedUrl":"https://res.cloudinary.com/dcleoboh7/image/upload/f_auto,q_auto/v1/ecommerce/users/img20"}}])
+## Database 
+- SQL Server 
+  - e.g. mysql, postrgres, oracle, mssql, sqlite, access
+- NoSQL Server (Not only Sql)
+  - e.g. Mongodb, couchdb, cassandra, Redis, HBase
+
+### DB Access 
+#### Mongodb 
+  * Local machine
+    - setup in your device  
+  * Cloud hosting
+    - access 
+  * Table   => Collection
+  * RowSet  => Document 
+  - Access 
+    - `protocol://[<user>:<password>@]<host>:<portNo>[[/<dbName>][?options]]`
+    - `e.g. mongodb://localhost:27017`
+    - `e.g. mongodb://127.0.0.1:27017`
+    - `e.g. mongodb+srv://mern-79:password@clusterhost/`
+  - 3 ways of accessing 
+    * using shell (mongosh)
+    * Mongodb Compass (GUI app)
+    * Our code / applications (developer option)
+#### Operations 
+- CRUD 
+##### Create
+- Insert => 
+  * Single row entry 
+    -  `db.<collectionName>.insertOne(json Object)` 
+  * Multiple row 
+    - `db.<collectionName>.insertMany(Array or objects)`
+
+  - e.g. users collection 
+  - `db.users.insertOne({"fullName": "Sandesh Bhattarai","email": "merndeveloper.sandesh@gmail.com","password": "$2a$12$Jv7p7KhK28R/eDb8LPc2DeiDwQlf5OcxfjXm2jOGEzDvAtxgJOVjm","role": "admin","gender": "male","address": "Kathmandu","phone": "9876543210","image": {"url": "https://res.cloudinary.com/diijizcvp/image/upload/v1739163013/ecom-37/user/i0ie5wgvpzsfewuzulv5.jpg","optimizedUrl": "https://res.cloudinary.com/diijizcvp/image/upload/f_auto,q_80/v1/ecom-37/user/i0ie5wgvpzsfewuzulv5?_a=BAMCkGUq0"},"status": "inactive","activationToken": "p6wfTOH73it43AN5WZWFMxcuFCRwJhnpm9ggk1SrLNO9GZTrXUSDmQs4yAfHBP94qNWQMNm2B4ARDf8Hrh4Qc35EjDRbXqirxfbU"})`
+
+
+  - e.g. users
+  - `db.users.insertMany([{"fullName":"User One","email":"merndeveloper.sandesh+seller@gmail.com","password":"$2a$12$a.BDW7ulJ4i965C4BVlao.MXRA6V0/iSVku3wrHmX7oNkWzUoFOk6","role":"seller","gender":"male","address":"Lalitpur","phone":"9812345678","image":{"url":"https://res.cloudinary.com/diijizcvp/image/upload/v1739163309/ecom-37/user/p33xtvoomf70wsu3khfw.jpg","optimizedUrl":"https://res.cloudinary.com/diijizcvp/image/upload/f_auto,q_80/v1/ecom-37/user/p33xtvoomf70wsu3khfw?_a=BAMCkGUq0"},"status":"inactive","activationToken":"eW3keCdyITuuEgAR15MvHtLncuCQNyQBsCTh5jTeef9ERHR4zbKUSbtayth3xyi9POF8XCSLDD5xE7swP3G7h4PcaTGQdgqwhLrI"},{"fullName":"User Two","email":"merndeveloper.sandesh+customer@gmail.com","password":"$2a$12$a.BDW7ulJ4i965C4BVlao.MXRA6V0/iSVku3wrHmX7oNkWzUoFOk6","role":"customer","gender":"male","address":"Bhaktapur","phone":"9812345876","image":{"url":"https://res.cloudinary.com/diijizcvp/image/upload/v1739163309/ecom-37/user/p33xtvoomf70wsu3khfw.jpg","optimizedUrl":"https://res.cloudinary.com/diijizcvp/image/upload/f_auto,q_80/v1/ecom-37/user/p33xtvoomf70wsu3khfw?_a=BAMCkGUq0"},"status":"inactive","activationToken":"eW3keCdyITuuEgAR15MvHtLncuCQNyQBsCTh5jTeef9ERHR4zbKUSbtayth3xyi9POF8XCSLDD5xE7swP3G7h4PcaTGQdgqwhLrI"}])`
+
+##### Read 
+- `db.<collectionName>.findOne(filter, projection, options)`
+- `db.<collectionName>.find(filter, projection, options)`
+    ```json 
+      { "key": "value"}   // ~ WHERE key = "value"
+      {"key": "value", "key1": "value"}  // ~ WHERE key = "value" and key1 = "value"
+
+      {"key": {"$op": <"expression">}}
+
+      {"$op": <"expression">}
+
+      // operator of mongodb query operator 
+    ```
+
+##### Update 
+  - `db.<collectionName>.updateOne(filter, {$set: <data>}, options)`
+  - `db.<collectionName>.updateMany(filter, {$set: <data>}, options)`
+
+##### Delete
+  - `db.<collectionName>.deleteOne(filter)`
+  - `db.<collectionName>.deleteMany(filter)`
+
+
+### Mongodb Access: 
+- Shell URL: mongosh "mongodb+srv://cluster0.nss1a.mongodb.net/" --apiVersion 1 --username mern-37
+- package: mongoose
+
+### Model Definition 
+- Physical Tables nodejs(ORM/ODM) => structure define/design 
+* Users 
+  - _id, name, email, password, role, gender, phone, address, activationToken, status, forgetPasswordToken, expiryTime, image, ceatedAt, updatedAt
+* Banners/Sliders ===> SQL db for this 
+* Brands 
+  - _id, title, slug, logo, status, createdAt, updatedAt, createdBy, updatedBy
+* Categories 
+  - _id, status, createdAt, updatedAt, createdBy, updatedBy, 
+  - title, slug, image, parentId
+* Products 
+  - _id, status, createdAt, updatedAt, createdBy, updatedBy, 
+  - title, slug, price, discount, afterDiscount, detail, category, brand, seller, images, attributes, featured
+  - sku, stock, manuf, exp
+
+* Orders 
+  - code, customer, orderDetails, subtotal, discount, serviceCharge, tax, total, status(pending, verified, cancelled, processing, delivered), checkoutCompleted, 
+* OrderDetails(cart)
+  - order, customer, product, quantity, price, discount, deliverycharge
+* transactions 
+  - code, order, amount, mode, refid, response, status(paid, unpaid, refund/cancelled), customer
+  
+* Chats
+* inventories
+* rate And Reviews 
+* Voucher, coupons
+* ....
+
+* _id= 123, title = Motor, tools & DIY, slug=motot-tools-diy, image=null, parentId=null
+* _id: 234, title = Lubricants, slug = lubricants, image=null, parentId=123
+* _id: 345, title = Motorcycles, slug = motorcycles, image=null, parentId=123
+* _id: 456, title = Standard Bikes, slug = standard-bikes, image=null, parentId=345
