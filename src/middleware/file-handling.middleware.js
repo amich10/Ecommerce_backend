@@ -44,9 +44,10 @@ export const uploader = (type = 'image') =>{
 
                 code: 400,
                 status: "FILE_FORMAT_NOT_SUPPORTED",
+                
                 message:"Invalid file format",
                 detail:{
-                    [file.fieldname]: `File format not supported. Supported extensions are: ${allowedExtension.join()}`
+                    [file.fieldname]: `File format not supported. Supported extensions are: ${allowedExtension.join(',')}`
                 }
             })
         }

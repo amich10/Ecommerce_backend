@@ -53,3 +53,12 @@ export const OrderStatus = {
     PROCESSING:"processing",
     DELIVERED:"delivered"
 }
+
+export const postgresConfig ={
+    dialect:process.env.DB_DIALECT,
+    host:process.env.DB_HOST,
+    username:process.env.DB_USERNAME,
+    port:process.env.DB_PORT,
+    password:process.env.DB_PASSWORD,
+    dbName:process.env.DB_DBNAME
+}

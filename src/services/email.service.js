@@ -31,6 +31,7 @@ class EmailService{
     sendEmail = async({
         to,sub,message
     }) =>{
+        console.log({to})
         try{
             return await this.#transport.sendMail({
                 to:to,
@@ -47,6 +48,7 @@ class EmailService{
         }
         catch(exception){ //exception while sending email: low priority bug
             console.log("---------- Error while sending Email ----------")
+            console.log(exception)
             throw{
                 // code:500, //default server serror
                 message:"sending email failed",

@@ -19,7 +19,7 @@ const orderSchema = new mongoose.Schema(
       ref: "OrderDetail",
       required: true,
     },
-    subtotal: {
+    subTotal: {
       type: Number,
       required: true,
     },
@@ -41,7 +41,7 @@ const orderSchema = new mongoose.Schema(
     },
     status: {
       type: String,
-      enum: Object.values(OrderStatus),
+      enum: [OrderStatus.PENDING,OrderStatus.CANCELLED,OrderStatus.DELIVERED,OrderStatus.PROCESSING,OrderStatus.VERIFIED],
       default: OrderStatus.PENDING,
     },
     checkOutCompleted: {

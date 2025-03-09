@@ -3,6 +3,9 @@ import router from "./router.config.js";
 import cookieParser from "cookie-parser";
 import './db.config.js'
 
+//sql server
+import "./sequelize.config.js"
+
 const app = express()
 
 //parsers
