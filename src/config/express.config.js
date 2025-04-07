@@ -2,11 +2,40 @@ import express from "express";
 import router from "./router.config.js";
 import cookieParser from "cookie-parser";
 import './db.config.js'
+import cors from "cors"
 
 //sql server
 import "./sequelize.config.js"
+import rateLimit from "express-rate-limit";
+import helmet from "helmet";
 
 const app = express()
+
+
+//Server security policy
+//allow corss
+//allowing cors on specific route
+/* app.post('/health',cors(),(req,res,next) =.{
+
+})
+ */
+//allowing cors on overall app
+app.use(cors({
+  origin: "http://localhost:5173"
+}))
+//rate limiter
+const limiter = rateLimit({
+  windowMs:60000,   //blocker time limit (1 min = 60 sec = 60000millisec)
+  limit:30
+})
+app.use(limiter)
+//content policy
+app.use(helmet())
+
+
+
+
+
 
 //parsers
 

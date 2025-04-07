@@ -7,8 +7,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "watch": "nodemon index.js",
-    "migrate":"npx sequelize-cli db:migrate",
-    "migrate:revert":"npx sequelize db:migrate:undo"
+    "migrate": "npx sequelize-cli db:migrate",
+    "migrate:revert": "npx sequelize db:migrate:undo"
   },
   "repository": {
     "type": "git",
@@ -25,8 +25,11 @@
     "bcryptjs": "^2.4.3",
     "cloudinary": "^2.5.1",
     "cookie-parser": "^1.4.7",
+    "cors": "^2.8.5",
     "dotenv": "^16.4.7",
     "express": "^5.0.1",
+    "express-rate-limit": "^7.5.0",
+    "helmet": "^8.1.0",
     "joi": "^17.13.3",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.10.0",

@@ -12,6 +12,7 @@ class AuthController {
 
       //DB store
       const userObj = await authSvc.userStore(userData);
+      console.log(userObj)
 
       // decrypt and compare the passsword
       // let match = bcrypt.compareSync(data.confirmPassowrd, data.password)
@@ -19,7 +20,8 @@ class AuthController {
 
       //TODO: Email operation
 
-      await authSvc.notifyActivationEmal({
+      // removed await  for faster processing of time and sets email operation in the backgeround
+      authSvc.notifyActivationEmal({
         name: userObj.name,
         email: userObj.email,
         activationToken: userObj.activationToken,
@@ -34,6 +36,7 @@ class AuthController {
         options: null,
       });
     } catch (exception) {
+      console.log(exception)
       next(exception);
     }
   };

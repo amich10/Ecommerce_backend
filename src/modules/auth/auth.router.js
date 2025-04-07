@@ -52,7 +52,6 @@ authRouter.get('/activate/:token',authCtrl.activateUser)
 authRouter.post('/login', bodyValidator(LoginUserDTO),authCtrl.userLogin) 
 authRouter.get('/me', allowUser(),authCtrl.getUserProfile) //only accessible by logged user
 
-
 authRouter.post('/forget-password',bodyValidator(ForgetPasswordDTO),authCtrl.forgetPassword)
 
 authRouter.get('/verify-token/:token',authCtrl.verifyForgetPasswordToken)

@@ -12,7 +12,6 @@ const allowUser = (roles= null) =>{  // user logged in or not and permission all
             let token = req.headers['authorization'] || null;
 
             //remove Bearer from {Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6Ik}
-    
             if(!token){
                 next({
                     code:401, //unauthorized
@@ -47,6 +46,7 @@ const allowUser = (roles= null) =>{  // user logged in or not and permission all
                 if(!user){
                     next({
                         code:401,
+                        
                         message:"user not found",
                         status:"USER_NOT_FOUND"
                     })

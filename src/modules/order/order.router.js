@@ -15,4 +15,11 @@ orderRouter.post('/checkout',allowUser([userRoles.ADMIN,userRoles.CUSTOMER]),bod
 //TODO:VERIFY OR CANCEL
 orderRouter.get('/verify-order/:code/:status', orderCtrl.updateOrder) //=> orderCtrl.updateOrder =>code detail, {code:code,status:"pending"} =>status =>statusupdate
 
+//payment
+
+//listing order
+
+orderRouter.get('/list', allowUser(),orderCtrl.listAllOrder)
+orderRouter.get("/detail/:id", allowUser(), orderCtrl.getOrderDetail)
+
 export default orderRouter;

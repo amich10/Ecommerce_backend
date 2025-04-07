@@ -37,7 +37,7 @@ class CloudinaryService{
             //optimized url 
             let optimizedUrl = cloudinary.url(uploadResult.public_id, {
                 fetch_format: "auto",
-                quality: "atuo"
+                quality: "auto"
             })
 
 

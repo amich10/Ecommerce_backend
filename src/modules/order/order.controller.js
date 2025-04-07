@@ -1,8 +1,8 @@
 import orderDetailSvc from "./order-details/order-detail.service.js";
 import orderSvc from "./order.service.js";
-import { appConfig } from "../../config/constants.js";
-import emailSvc from "../../services/email.service.js";
+import { userRoles } from "../../config/constants.js";
 import { OrderStatus } from "../../config/constants.js";
+import transactionSvc from "./transactions/transcation.service.js";
 
 class OrderController {
   checkOutOrder = async (req, res, next) => {
@@ -50,8 +50,15 @@ class OrderController {
         cancel: OrderStatus.CANCELLED,
         email: mail,
       });
+
+      const transactionObj = transactionSvc.transformTOTransaction(order);
+      const transaction = await transactionSvc.create(transactionObj);
+
       res.json({
-        data: order,
+        data: {
+          order: order,
+          transaction: transaction,
+        },
         message:
           "Your order has been placed successfully. Please check your email to verify your order.",
         status: "ORDER_PLACED",
@@ -109,6 +116,85 @@ class OrderController {
       next(exception);
     }
   };
+
+  listAllOrder = async (req, res, next) => {
+    try {
+      const loggedInUser = req.authUser;
+
+      let filter = {};
+
+      if (req.query.status) {
+        filter = {
+          status: req.query.status,
+        };
+      }
+
+      let list = [];
+      let pagination;
+      if (loggedInUser.role === userRoles.ADMIN) {
+        // list all orders
+        let { data, pagination: paging } = await orderSvc.listAllByFilters(
+          req.query,
+          filter
+        );
+        list = data;
+        pagination = paging;
+      } else if (loggedInUser.role === userRoles.CUSTOMER) {
+        // own orders
+        filter = {
+          ...filter,
+          customer: loggedInUser._id,
+        };
+        let { data, pagination: paging } = await orderSvc.listAllByFilters(
+          req.query,
+          filter
+        );
+        list = data;
+        pagination = paging;
+      } else if (loggedInUser.role === userRoles.SELLER) {
+        // own product's orders
+        filter = {
+          seller: loggedInUser._id,
+          order: { $ne: null },
+          status: { $nin: ["new", "cancelled"] },
+        };
+        let { data, pagination: paging } =
+          await orderDetailSvc.getAllOrderDetailByFilterWithPagination(
+            req.query,
+            filter
+          );
+        list = data;
+        pagination = paging;
+      }
+
+      res.json({
+        data: list,
+        message: "Your orders",
+        status: "SUCCESS",
+        options: { ...pagination },
+      });
+    } catch (exception) {
+      next(exception);
+    }
+  };
+
+  getOrderDetail = async(req, res, next) => {
+    try {
+      const id = req.params.id;
+      let filter = {
+        order: id
+      }
+      const {data, pagination} = await orderDetailSvc.getAllOrderDetailByFilterWithPagination(req.query, filter)
+      res.json({
+        data: data,
+        message: "Your order Detail",
+        status: "SUCCESS",
+        options: { ...pagination },
+      });
+    } catch(exception) {
+      next(exception)
+    }
+  }
 }
 
 const orderCtrl = new OrderController();

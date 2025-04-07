@@ -19,6 +19,7 @@ class OrderService extends BaseService {
       let amount = price * item.quantity;
       item.totalAmount = amount + item.deliveryCharge - item.discount;
       item.price = price;
+      item.status = 'completed'
 
       subTotal += item.totalAmount;
       cartId.push(item._id);
@@ -67,6 +68,32 @@ class OrderService extends BaseService {
       throw exception;
     }
   };
+
+  listAllByFilters = async(query,filter = {}) =>{
+    try {
+      let page = +query.page || 1;
+      let limit = +query.limit || 10;
+      let skip = (page - 1) * limit;
+
+      const list = await orderModel.find(filter)
+          .populate("customer", ['_id','name','email','role','image','address','phone'])
+          .populate("orderDetails")
+          .sort({createdAt: "desc"})
+          .skip(skip)
+          .limit(limit)
+      const count = await orderModel.countDocuments(filter)
+      return {
+        data: list, 
+        pagination: {
+          page: page,
+          limit: limit, 
+          total: count
+        }
+      }
+    } catch (exception) {
+      throw exception
+    }
+  }
 }
 
 const orderSvc = new OrderService();

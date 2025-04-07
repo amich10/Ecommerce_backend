@@ -1,5 +1,4 @@
 import mongoose from "mongoose";
-import orderModel from "../order.model.js";
 
 const orderDetailSchema = new mongoose.Schema({
     order:{
@@ -41,6 +40,11 @@ const orderDetailSchema = new mongoose.Schema({
         type:Number,
         default:1000 //paisa
     },
+    status:{
+        type:String,
+        enum:['new','completed','cancelled'],
+        default:'new'
+    },
     totalAmount:{
         type:Number,
         required:true
@@ -62,6 +66,6 @@ const orderDetailSchema = new mongoose.Schema({
     autoIndex:true
 })
 
-const orderDetailModel = mongoose.model('OderDetail',orderDetailSchema)
+const orderDetailModel = mongoose.model('OrderDetail',orderDetailSchema)
 
 export default orderDetailModel;
