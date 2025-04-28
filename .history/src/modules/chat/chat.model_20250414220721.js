@@ -1,0 +1,29 @@
+
+import mongooese from "mongoose";
+
+
+const chatSchema = new mongooese.Schema({
+    sender:{
+        type:mongooese.Types.ObjectId,
+        ref:"User",
+        required:true
+    },
+    receiver:{
+        type:mongooese.Types.ObjectId,
+        ref:"User",
+        required:true
+    },
+    message:{
+        type:String,
+        min:1,
+        required:true
+    }
+},
+{
+    timestamps:true,
+    autoIndex:true,
+    autoCreate:true
+}
+)
+
+const ChatModel = mongooese.model(chatSchema)

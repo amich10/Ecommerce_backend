@@ -1,0 +1,18 @@
+class ChatController {
+    storeChat = async(req,res,next) =>{
+        try {
+            
+            let loggedInuser = req.authUser;
+            const data = req.body;
+            data.sender = loggedInuser
+
+
+            const chat = await cha
+
+        } catch (exception) {
+            next(exception)
+        }
+    }
+}
+const chatCtrl = new ChatController()
+export default chatCtrl;
